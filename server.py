@@ -12,11 +12,11 @@ import os
 import sys
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
-PUBLIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class JagungHTTPHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=PUBLIC_DIR, **kwargs)
+        super().__init__(*args, directory=ROOT_DIR, **kwargs)
 
     def guess_type(self, path):
         # Pastikan MIME types untuk 3D GLB dan CSS terdefinisi dengan tepat

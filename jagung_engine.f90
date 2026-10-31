@@ -75,9 +75,9 @@ program jagung_engine
   print '(A)', "✅ [OK] src/scss/_corn_tokens.scss berhasil dibuat!"
 
   ! ----------------------------------------------------------------------------
-  ! 2. GENERATE DATASET SIMULASI PERTUMBUHAN HARIAN (public/data_corn.json)
+  ! 2. GENERATE DATASET SIMULASI PERTUMBUHAN HARIAN (data_corn.json)
   ! ----------------------------------------------------------------------------
-  open(newunit=unit_json, file="/home/dongkrak/jagungnidun/public/data_corn.json", status="replace")
+  open(newunit=unit_json, file="/home/dongkrak/jagungnidun/data_corn.json", status="replace")
 
   write(unit_json,'(A)') "{"
   write(unit_json,'(A)') '  "engine": "GNU Fortran 14.3.1 - Nidun Agro-Physics",'
@@ -141,7 +141,7 @@ program jagung_engine
   write(unit_json,'(A)') "}"
 
   close(unit_json)
-  print '(A)', "✅ [OK] public/data_corn.json berhasil dibuat!"
+  print '(A)', "✅ [OK] data_corn.json berhasil dibuat!"
 
   ! Hitung durasi eksekusi Fortran
   call system_clock(count_end)

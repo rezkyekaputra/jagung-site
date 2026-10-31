@@ -22,8 +22,8 @@ engine:
 # 2. Kompilasi SCSS menjadi CSS Minified dengan Dart Sass
 css: engine
 	@echo "🎨 [2/2] Mengompilasi SCSS dengan Dart Sass 1.107 (--style=compressed)..."
-	@$(SASS) --style=compressed --no-source-map src/scss/style.scss public/css/style.min.css
-	@echo "✅ CSS Terkompresi Sukses: public/css/style.min.css ($$(wc -c < public/css/style.min.css) bytes)"
+	@$(SASS) --style=compressed --no-source-map src/scss/style.scss css/style.min.css
+	@echo "✅ CSS Terkompresi Sukses: css/style.min.css ($$(wc -c < css/style.min.css) bytes)"
 
 build: css
 	@echo ""
@@ -36,7 +36,7 @@ serve: build
 # Mode Dev Watcher untuk SCSS
 watch:
 	@echo "👀 Menjalankan Dart Sass Watcher..."
-	@$(SASS) --watch src/scss:public/css --style=expanded
+	@$(SASS) --watch src/scss:css --style=expanded
 
 # Uji coba fungsionalitas HTTP
 test:

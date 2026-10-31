@@ -76,32 +76,33 @@ make clean   # Bersihkan file binary kompilasi
 
 ---
 
-## 📁 Struktur Direktori
+## 📁 Struktur Direktori (GitHub Pages Ready)
 
 ```
 jagungnidun/
+├── .nojekyll              # Bypass Jekyll processing untuk GitHub Pages
+├── index.html             # Halaman web single-page utama (Root Entry)
+├── data_corn.json         # Dataset pertumbuhan 120 HST hasil Fortran
 ├── Makefile               # Orchestrator kompilasi & testing
 ├── README.md              # Dokumentasi proyek
 ├── server.py              # Server lokal Python dengan MIME-types akurat
 ├── jagung_engine.f90      # Source code Fortran 14 komputasi biometrik
-├── src/
-│   └── scss/
-│       ├── _corn_tokens.scss    # Token & keyframes hasil auto-generate Fortran
-│       ├── _romanza_tokens.scss # Token warna hasil ekstraksi foto romanza.png
-│       ├── _romanza_art.scss    # Konversi foto ke Sass (Base64 URI & 3.5k Pure CSS Box-Shadow Art)
-│       └── style.scss           # Stylesheet utama Dart Sass
-└── public/
-    ├── index.html               # Halaman web single-page utama
-    ├── data_corn.json           # Dataset pertumbuhan 120 HST hasil Fortran
-    ├── images/
-    │   └── romanza.png          # Foto mentah jagung manis varietas Romanza (281 KB)
-    ├── css/
-    │   └── style.min.css        # CSS minified hasil kompilasi Dart Sass
-    ├── js/
-    │   ├── app.js               # Runtime interaktif slider & canvas pollen
-    │   └── model-viewer.min.js  # Engine 3D Model Viewer WebGL
-    └── models/
-        └── jagung.glb           # Aset 3D model tongkol jagung (1.9 MB)
+├── css/
+│   └── style.min.css      # CSS minified hasil kompilasi Dart Sass
+├── js/
+│   ├── app.js             # Runtime interaktif slider & canvas pollen
+│   ├── three_studio.js    # Interactive Three.js & GLSL Shader Studio
+│   └── model-viewer.min.js# Engine 3D Model Viewer WebGL
+├── images/
+│   └── romanza.png        # Foto mentah jagung manis varietas Romanza (281 KB)
+├── models/
+│   └── jagung.glb         # Aset 3D model tongkol jagung (1.9 MB)
+└── src/
+    └── scss/
+        ├── _corn_tokens.scss    # Token & keyframes hasil auto-generate Fortran
+        ├── _romanza_tokens.scss # Token warna hasil ekstraksi foto romanza.png
+        ├── _romanza_art.scss    # Konversi foto ke Sass (Base64 URI & 3.5k Pure CSS Box-Shadow Art)
+        └── style.scss           # Stylesheet utama Dart Sass
 ```
 
 ---

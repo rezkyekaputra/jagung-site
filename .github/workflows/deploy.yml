@@ -44,15 +44,15 @@ jobs:
           ./jagung_engine
 
           # 2. Kompilasi SCSS dengan Dart Sass
-          sass --style=compressed --no-source-map src/scss/style.scss public/css/style.min.css
+          sass --style=compressed --no-source-map src/scss/style.scss css/style.min.css
 
       - name: 🌐 Konfigurasi GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: 📦 Unggah Artifact Direktori Public
+      - name: 📦 Unggah Artifact Direktori Root
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'public'
+          path: '.'
 
       - name: 🚀 Deploy ke GitHub Pages Live
         id: deployment
