@@ -54,6 +54,8 @@ test:
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/images/romanza.png | grep 200 > /dev/null && echo "✅ PASS (281KB PNG Image)" || echo "❌ FAIL"; \
 	echo -n "  -> Testing GET /data_corn.json (Fortran JSON Data): "; \
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/data_corn.json | grep 200 > /dev/null && echo "✅ PASS (Valid JSON)" || echo "❌ FAIL"; \
+	echo -n "  -> Testing GET /js/three_studio.js (Three.js & GLSL Studio): "; \
+	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/js/three_studio.js | grep 200 > /dev/null && echo "✅ PASS (Three.js Module)" || echo "❌ FAIL"; \
 	kill $$PID 2>/dev/null || true; \
 	wait $$PID 2>/dev/null || true; \
 	echo "🌸 Seluruh pengujian otomatis JagungNidun berhasil 100%!"

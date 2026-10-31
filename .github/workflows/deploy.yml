@@ -1,0 +1,59 @@
+name: Deploy JagungNidun to GitHub Pages 🌽
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+# Konfigurasi perizinan untuk GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Kode Repositori
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Compiler GNU Fortran 14
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gfortran
+
+      - name: 🎨 Setup Dart Sass 1.80+
+        run: |
+          curl -fsSL https://github.com/sass/dart-sass/releases/download/1.80.6/dart-sass-1.80.6-linux-x64.tar.gz | tar -xz
+          sudo mv dart-sass/sass /usr/local/bin/sass
+          sass --version
+
+      - name: 🌽 Eksekusi Fortran Bio-Engine & Kompilasi SCSS
+        run: |
+          # 1. Kompilasi & Jalankan Fortran Bio-Engine
+          gfortran -O3 -march=x86-64 -Wall -o jagung_engine jagung_engine.f90
+          ./jagung_engine
+
+          # 2. Kompilasi SCSS dengan Dart Sass
+          sass --style=compressed --no-source-map src/scss/style.scss public/css/style.min.css
+
+      - name: 🌐 Konfigurasi GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 📦 Unggah Artifact Direktori Public
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'public'
+
+      - name: 🚀 Deploy ke GitHub Pages Live
+        id: deployment
+        uses: actions/deploy-pages@v4

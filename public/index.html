@@ -9,10 +9,20 @@
   <!-- Stylesheet Hasil Kompilasi Dart Sass -->
   <link rel="stylesheet" href="css/style.min.css">
   
-  <!-- 3D Model Viewer Engine (Three.js WebGL) -->
-  <script type="module" src="js/model-viewer.min.js"></script>
+  <!-- Import Map untuk Three.js & Addons (CDN Fallback) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
   
-  <!-- Interactive Physics & Canvas Script -->
+  <!-- Three.js + Custom GLSL Visual FX Engine -->
+  <script type="module" src="js/three_studio.js"></script>
+  
+  <!-- Interactive Physics & Growth Lab Runtime -->
   <script defer src="js/app.js"></script>
 </head>
 <body>
@@ -81,24 +91,48 @@
         </div>
       </div>
 
-      <!-- 3D Interactive WebGL Container -->
+      <!-- 3D Interactive WebGL & GLSL Studio Container -->
       <div class="hero-3d" id="3d-studio">
-        <div class="viewer-badge">
-          <span>⚡ Three.js / WebGL 60 FPS</span>
+        <div class="viewer-top-bar">
+          <div class="viewer-badge" id="activeShaderBadge">
+            <span>⚡ Three.js × GLSL Shaders</span>
+          </div>
+          <div class="viewer-quick-actions">
+            <button id="btnToggleRotate" class="action-btn active" title="Toggle Putar Otomatis">🔄 Putar</button>
+            <button id="btnResetCamera" class="action-btn" title="Reset Posisi Kamera">🎯 Reset</button>
+          </div>
         </div>
-        <model-viewer
-          src="models/jagung.glb"
-          alt="3D Model Jagung Nidun"
-          auto-rotate
-          camera-controls
-          shadow-intensity="1.8"
-          exposure="1.2"
-          auto-rotate-delay="500"
-          rotation-per-second="20deg"
-          interaction-prompt="none"
-        ></model-viewer>
+
+        <!-- Canvas Three.js Engine -->
+        <div id="threeStudioContainer" class="three-canvas-container">
+          <div id="threeLoading" class="three-loading-spinner">
+            <div class="spinner"></div>
+            <span>Memuat 3D Tongkol Jagung...</span>
+          </div>
+        </div>
+
+        <!-- GLSL Shader Controls HUD -->
+        <div class="shader-hud">
+          <div class="shader-modes-tabs">
+            <button class="shader-tab active" data-shader-mode="pbr">🌾 PBR Standar</button>
+            <button class="shader-tab" data-shader-mode="glsl-sss">✨ GLSL Golden SSS</button>
+            <button class="shader-tab" data-shader-mode="glsl-heatmap">🌡️ GLSL Heatmap GDD</button>
+            <button class="shader-tab" data-shader-mode="glsl-wireframe">🕸️ GLSL Cyber Wire</button>
+          </div>
+          <div class="shader-sliders-row">
+            <div class="slider-group">
+              <label>Intensitas SSS: <span id="valShaderGlow">1.2x</span></label>
+              <input type="range" id="sliderShaderGlow" min="0.2" max="3.0" step="0.1" value="1.2">
+            </div>
+            <div class="slider-group">
+              <label>Kadar Air Bulir: <span id="valShaderMoisture">85%</span></label>
+              <input type="range" id="sliderShaderMoisture" min="0.1" max="1.5" step="0.05" value="0.85">
+            </div>
+          </div>
+        </div>
+
         <div class="viewer-hint">
-          <span>🖱️ Putar 360° & Zoom In/Out dengan Mouse atau Layar Sentuh</span>
+          <span>🖱️ Putar 360° & Zoom In/Out | Ganti Mode Visual FX GLSL di Atas!</span>
         </div>
       </div>
     </section>

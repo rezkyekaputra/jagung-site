@@ -1,6 +1,6 @@
 # JagungNidun 🌽 · Agro-Tech Futuristik
 
-> Website agrikultur modern dan visualisasi biometrik tanaman jagung (*Zea mays L.*) berbasis **GNU Fortran 14**, **Dart Sass 1.107**, dan **3D WebGL (Three.js / Google Model-Viewer)**.
+> Website agrikultur modern dan visualisasi biometrik tanaman jagung (*Zea mays L.*) berbasis **GNU Fortran 14**, **Dart Sass 1.107**, **Three.js WebGL**, dan **GLSL Custom Shaders (Visual FX)**.
 
 ---
 
@@ -29,13 +29,19 @@ JagungNidun dirancang dengan memisahkan komputasi sains berkecepatan tinggi deng
    - Komponen kaca akrilik (*Frosted Glassmorphism*) dengan *backdrop-filter blur*.
    - Output dikompresi otomatis (`--style=compressed --no-source-map`) menjadi **16 KB**.
 
-3. **3D Interactive Studio (WebGL / Three.js):**
-   - Model 3D tongkol jagung resolusi tinggi (`jagung.glb`) dapat diputar 360°, di-zoom, dan diinspeksi secara real-time di 60 FPS.
-   - Efek latar belakang partikel serbuk sari emas (*golden pollen dust*) bertenaga HTML5 Canvas 2D.
+3. **3D Interactive Studio (Three.js + GLSL Visual FX):**
+   - Model 3D tongkol jagung (`jagung.glb`) dirender dengan engine Three.js murni di 60 FPS.
+   - **GLSL Subsurface Scattering (SSS):** Mensimulasikan transmisi cahaya menembus bulir jagung kuning transparan dan kilau mentega basah (*buttery moisture sheen*).
+   - **GLSL Biometric Heatmap:** Memetakan gradien akumulasi GDD dan kadar air dari pangkal batang hingga rambut tongkol.
+   - **3D GPU Golden Pollen Particles:** 750 partikel serbuk sari emas melayang dalam koordinat silindrikal 3D bertenaga GLSL Vertex & Fragment Shader.
+   - Interaksi HUD realtime: switcher mode shader, slider intensitas kilau SSS, slider kadar air bulir, dan auto-rotation.
 
 4. **Lab Pertumbuhan Interaktif:**
    - Slider dinamik dari 0 hingga 120 Hari Setelah Tanam (HST).
    - Menampilkan transisi fase agronomis dari *Emergensi (VE)*, *Elongasi (V6)*, *Silking (R1)*, hingga *Kematangan Fisiologis (R6)*.
+
+5. **Deploy Otomatis ke GitHub Pages:**
+   - Dilengkapi pipeline CI/CD GitHub Actions (`.github/workflows/deploy.yml`) untuk kompilasi dan deploy otomatis ke GitHub Pages saat `git push origin master`.
 
 ---
 
