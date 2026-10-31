@@ -50,6 +50,8 @@ test:
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/css/style.min.css | grep 200 > /dev/null && echo "✅ PASS (200 OK)" || echo "❌ FAIL"; \
 	echo -n "  -> Testing GET /models/jagung.glb (3D Asset): "; \
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/models/jagung.glb | grep 200 > /dev/null && echo "✅ PASS (1.9MB GLB Streaming)" || echo "❌ FAIL"; \
+	echo -n "  -> Testing GET /images/romanza.png (Raw Photo): "; \
+	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/images/romanza.png | grep 200 > /dev/null && echo "✅ PASS (281KB PNG Image)" || echo "❌ FAIL"; \
 	echo -n "  -> Testing GET /data_corn.json (Fortran JSON Data): "; \
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/data_corn.json | grep 200 > /dev/null && echo "✅ PASS (Valid JSON)" || echo "❌ FAIL"; \
 	kill $$PID 2>/dev/null || true; \

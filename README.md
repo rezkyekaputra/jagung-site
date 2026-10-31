@@ -80,18 +80,21 @@ jagungnidun/
 ├── jagung_engine.f90      # Source code Fortran 14 komputasi biometrik
 ├── src/
 │   └── scss/
-│       ├── _corn_tokens.scss  # Token & keyframes hasil auto-generate Fortran
-│       └── style.scss         # Stylesheet utama Dart Sass
+│       ├── _corn_tokens.scss    # Token & keyframes hasil auto-generate Fortran
+│       ├── _romanza_tokens.scss # Token warna hasil ekstraksi foto romanza.png
+│       └── style.scss           # Stylesheet utama Dart Sass
 └── public/
-    ├── index.html             # Halaman web single-page utama
-    ├── data_corn.json         # Dataset pertumbuhan 120 HST hasil Fortran
+    ├── index.html               # Halaman web single-page utama
+    ├── data_corn.json           # Dataset pertumbuhan 120 HST hasil Fortran
+    ├── images/
+    │   └── romanza.png          # Foto mentah jagung manis varietas Romanza (281 KB)
     ├── css/
-    │   └── style.min.css      # CSS minified hasil kompilasi Dart Sass
+    │   └── style.min.css        # CSS minified hasil kompilasi Dart Sass
     ├── js/
-    │   ├── app.js             # Runtime interaktif slider & canvas pollen
-    │   └── model-viewer.min.js# Engine 3D Model Viewer WebGL
+    │   ├── app.js               # Runtime interaktif slider & canvas pollen
+    │   └── model-viewer.min.js  # Engine 3D Model Viewer WebGL
     └── models/
-        └── jagung.glb         # Aset 3D model tongkol jagung (1.9 MB)
+        └── jagung.glb           # Aset 3D model tongkol jagung (1.9 MB)
 ```
 
 ---

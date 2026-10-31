@@ -39,8 +39,11 @@ class JagungHTTPHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Cache-Control", "no-cache, must-revalidate")
         super().end_headers()
 
+class ReusableTCPServer(socketserver.TCPServer):
+    allow_reuse_address = True
+
 if __name__ == "__main__":
-    with socketserver.TCPServer(("0.0.0.0", PORT), JagungHTTPHandler) as httpd:
+    with ReusableTCPServer(("0.0.0.0", PORT), JagungHTTPHandler) as httpd:
         print("🌽 ============================================================")
         print(f"🚀 JagungNidun Web Server aktif di http://localhost:{PORT}")
         print("   Melayani: 3D GLB, Canvas Pollen, Dart Sass CSS, & Fortran JSON")

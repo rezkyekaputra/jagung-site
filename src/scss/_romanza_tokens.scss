@@ -1,0 +1,53 @@
+/// ==============================================================================
+/// JAGUNG NIDUN · ROMANZA DESIGN TOKENS (DART SASS 1.107)
+/// Hasil ekstraksi biometrik spektral piksel dari foto mentah: romanza.png
+/// (260.642 px Husk Green & 199.786 px Kernel Yellow)
+/// ==============================================================================
+@use 'sass:math';
+@use 'sass:color';
+
+// --- 1. PALET WARNA BIJI JAGUNG MANIS (ROMANZA KERNELS) ---
+$romanza-kernel-p10: #e7c14a; // Bayangan pati biji terdalam
+$romanza-kernel-p30: #f4ce5e; // Nuansa emas matang
+$romanza-kernel-p50: #f7d86d; // Warna dominan bulir jagung Romanza
+$romanza-kernel-p70: #fadf7b; // Kuning manis cerah
+$romanza-kernel-p90: #fce78b; // Sorot cahaya mentari pada mahkota biji
+
+// --- 2. PALET WARNA KELOBOT DAUN (ROMANZA HUSK) ---
+$romanza-husk-p10:   #668c25; // Hijau pelepah pangkal tongkol
+$romanza-husk-p30:   #759d33; // Hijau serat daun teduh
+$romanza-husk-p50:   #80a941; // Warna hijau klorofil alami utama
+$romanza-husk-p70:   #8db44f; // Hijau daun muda segar
+$romanza-husk-p90:   #a0c472; // Pucuk ujung kelobot bercahaya
+
+// --- 3. GRADIEN SPEKTRAL ALAMI ROMANZA ---
+$romanza-gradient-kernel: linear-gradient(135deg, $romanza-kernel-p90 0%, $romanza-kernel-p50 55%, $romanza-kernel-p10 100%);
+$romanza-gradient-husk:   linear-gradient(135deg, $romanza-husk-p90 0%, $romanza-husk-p50 50%, $romanza-husk-p10 100%);
+$romanza-gradient-fusion: linear-gradient(135deg, $romanza-kernel-p50 0%, $romanza-husk-p50 100%);
+
+// --- 4. MAPS UNTUK LOOPING SASS ---
+$romanza-swatches: (
+  "kernel-light":   $romanza-kernel-p90,
+  "kernel-core":    $romanza-kernel-p50,
+  "kernel-shadow":  $romanza-kernel-p10,
+  "husk-light":     $romanza-husk-p90,
+  "husk-core":      $romanza-husk-p50,
+  "husk-shadow":    $romanza-husk-p10
+);
+
+// --- 5. MIXIN STYLING ROMANZA ---
+@mixin romanza-glow-card {
+  background: radial-gradient(circle at 20% 30%, rgba(247, 216, 109, 0.08) 0%, rgba(15, 23, 42, 0.75) 100%);
+  border: 1px solid rgba(128, 169, 65, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(102, 140, 37, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    border-color: $romanza-kernel-p70;
+    box-shadow: 0 20px 48px rgba(247, 216, 109, 0.22);
+    transform: translateY(-3px);
+  }
+}
