@@ -1,0 +1,752 @@
+/// ==============================================================================
+/// JAGUNG NIDUN · STYLESHEET RESMI (DART SASS 1.107)
+/// Menggabungkan Modern Agro-Tech, Luxury Obsidian-Gold Glassmorphism & 3D Studio
+/// ==============================================================================
+@use 'sass:math';
+@use 'sass:color';
+@use 'corn_tokens' as corn;
+
+// --- 1. DESIGN TOKENS & VARIABEL ---
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+:root {
+  --bg-deep: #070a0f;
+  --bg-card: rgba(15, 23, 42, 0.72);
+  --bg-card-hover: rgba(30, 41, 59, 0.85);
+  --border-glass: rgba(245, 158, 11, 0.22);
+  --border-glass-strong: rgba(245, 158, 11, 0.45);
+  --gold-primary: #f59e0b;
+  --gold-glow: #fbbf24;
+  --gold-gradient: linear-gradient(135deg, #f59e0b, #fbbf24, #d97706);
+  --emerald-accent: #10b981;
+  --emerald-gradient: linear-gradient(135deg, #10b981, #059669);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --shadow-gold: 0 16px 40px rgba(245, 158, 11, 0.16);
+  --shadow-deep: 0 20px 48px rgba(0, 0, 0, 0.55);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+}
+
+// --- 2. GLOBAL RESET & BASE ---
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: $font-sans;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+// Canvas Latar Partikel Serbuk Sari Emas
+#pollenCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 20%, #151f2e 0%, #070a0f 75%);
+}
+
+// --- 3. NAVBAR GLASSMORPHISM ---
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3.5rem;
+  background: rgba(7, 10, 15, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-glass);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+
+    .brand-icon {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+      animation: corn-photosynthesis-pulse 4s infinite ease-in-out;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--border-glass);
+      color: var(--gold-glow);
+    }
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.25s ease;
+      position: relative;
+
+      &:hover {
+        color: var(--gold-glow);
+      }
+    }
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: var(--radius-pill);
+    background: var(--gold-gradient);
+    color: #070a0f;
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(245, 158, 11, 0.35);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(245, 158, 11, 0.55);
+    }
+  }
+}
+
+// --- 4. HERO SECTION WITH 3D SHOWCASE ---
+.hero-section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 3rem 4rem;
+  gap: 3.5rem;
+
+  .hero-content {
+    flex: 1.1;
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 18px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: var(--radius-pill);
+      color: var(--emerald-accent);
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.4rem;
+
+      .highlight-gold {
+        background: var(--gold-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    p {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      max-width: 580px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+
+      .stat-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-glass);
+        padding: 1rem 1.2rem;
+        border-radius: var(--radius-md);
+        backdrop-filter: blur(12px);
+
+        .stat-value {
+          font-size: 1.6rem;
+          font-weight: 800;
+          color: var(--gold-glow);
+          font-family: $font-mono;
+        }
+
+        .stat-label {
+          font-size: 0.78rem;
+          color: var(--text-muted);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 28px;
+        border-radius: var(--radius-md);
+        background: var(--gold-gradient);
+        color: #070a0f;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 6px 24px rgba(245, 158, 11, 0.4);
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 32px rgba(245, 158, 11, 0.6);
+        }
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 28px;
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-main);
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--border-glass);
+        backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba(245, 158, 11, 0.12);
+          border-color: var(--gold-glow);
+        }
+      }
+    }
+  }
+
+  .hero-3d {
+    flex: 1;
+    position: relative;
+    height: 580px;
+    background: radial-gradient(circle at center, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-glass);
+    overflow: hidden;
+    box-shadow: var(--shadow-deep);
+
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+      outline: none;
+    }
+
+    .viewer-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(7, 10, 15, 0.85);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--gold-glow);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .viewer-hint {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(7, 10, 15, 0.75);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+  }
+}
+
+// --- 5. INTERACTIVE GROWTH LAB (FORTRAN SIMULATOR) ---
+.section-lab {
+  padding: 5rem 4rem;
+  background: rgba(15, 23, 42, 0.45);
+  border-top: 1px solid var(--border-glass);
+  border-bottom: 1px solid var(--border-glass);
+
+  .section-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 3.5rem;
+
+    .badge-label {
+      color: var(--emerald-accent);
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+  }
+
+  .lab-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-deep);
+
+    .slider-container {
+      margin-bottom: 2.5rem;
+
+      .slider-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .slider-title {
+          font-weight: 700;
+          font-size: 1.05rem;
+        }
+
+        .slider-day-badge {
+          font-family: $font-mono;
+          font-size: 1.3rem;
+          font-weight: 800;
+          color: var(--gold-glow);
+          background: rgba(245, 158, 11, 0.15);
+          padding: 4px 14px;
+          border-radius: var(--radius-md);
+          border: 1px solid var(--border-glass);
+        }
+      }
+
+      input[type=range] {
+        width: 100%;
+        height: 10px;
+        border-radius: 5px;
+        background: #1e293b;
+        outline: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: var(--gold-gradient);
+          box-shadow: 0 0 14px rgba(245, 158, 11, 0.8);
+          border: 2px solid #ffffff;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .slider-markers {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        margin-top: 8px;
+      }
+    }
+
+    .stage-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(16, 185, 129, 0.08));
+      border: 1px solid var(--border-glass-strong);
+      border-radius: var(--radius-md);
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      .stage-code-badge {
+        font-family: $font-mono;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: var(--gold-glow);
+        padding: 8px 16px;
+        background: rgba(7, 10, 15, 0.8);
+        border: 1px solid var(--border-glass);
+        border-radius: var(--radius-md);
+      }
+
+      .stage-info {
+        h4 {
+          font-size: 1.2rem;
+          font-weight: 800;
+          color: var(--text-main);
+          margin-bottom: 0.2rem;
+        }
+        p {
+          font-size: 0.92rem;
+          color: var(--text-muted);
+        }
+      }
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4rem;
+
+      .metric-box {
+        background: rgba(7, 10, 15, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-md);
+        padding: 1.4rem;
+        text-align: center;
+        transition: all 0.25s ease;
+
+        &:hover {
+          border-color: var(--gold-primary);
+          transform: translateY(-3px);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .metric-icon {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .metric-number {
+          font-family: $font-mono;
+          font-size: 1.8rem;
+          font-weight: 800;
+          color: var(--gold-glow);
+          margin-bottom: 0.2rem;
+        }
+
+        .metric-title {
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--text-muted);
+          text-transform: uppercase;
+        }
+
+        .metric-formula {
+          font-family: $font-mono;
+          font-size: 0.68rem;
+          color: var(--emerald-accent);
+          margin-top: 6px;
+        }
+      }
+    }
+  }
+}
+
+// --- 6. FORTRAN NUMERICAL ENGINE SECTION ---
+.section-engine {
+  padding: 5rem 4rem;
+
+  .engine-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+
+    .code-window {
+      background: #090d16;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-deep);
+
+      .window-header {
+        background: #111827;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+        .dot {
+          width: 11px;
+          height: 11px;
+          border-radius: 50%;
+          &.red { background: #ef4444; }
+          &.yellow { background: #f59e0b; }
+          &.green { background: #10b981; }
+        }
+
+        .window-title {
+          margin-left: 10px;
+          font-size: 0.8rem;
+          color: var(--text-muted);
+          font-family: $font-mono;
+        }
+      }
+
+      pre {
+        padding: 1.5rem;
+        font-family: $font-mono;
+        font-size: 0.82rem;
+        line-height: 1.6;
+        color: #e2e8f0;
+        overflow-x: auto;
+
+        .kw { color: #f59e0b; font-weight: bold; }
+        .fn { color: #38bdf8; }
+        .num { color: #a78bfa; }
+        .str { color: #34d399; }
+        .com { color: #64748b; font-style: italic; }
+      }
+    }
+
+    .engine-features {
+      h2 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: -0.6px;
+        margin-bottom: 1.2rem;
+      }
+
+      p {
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 1.8rem;
+      }
+
+      .feature-item {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+
+        .feature-icon {
+          width: 38px;
+          height: 38px;
+          border-radius: 10px;
+          background: rgba(245, 158, 11, 0.12);
+          border: 1px solid var(--border-glass);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--gold-glow);
+          font-size: 1.1rem;
+          flex-shrink: 0;
+        }
+
+        h4 {
+          font-size: 1.05rem;
+          font-weight: 700;
+          margin-bottom: 0.2rem;
+        }
+
+        p {
+          font-size: 0.88rem;
+          color: var(--text-muted);
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// --- 7. BENCHMARK TABLE & TECH STACK ---
+.section-tech {
+  padding: 4rem 4rem 6rem;
+  background: rgba(15, 23, 42, 0.35);
+
+  .tech-table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+
+      th {
+        background: rgba(7, 10, 15, 0.9);
+        padding: 1.1rem 1.6rem;
+        font-size: 0.84rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--gold-glow);
+        border-bottom: 1px solid var(--border-glass);
+      }
+
+      td {
+        padding: 1.2rem 1.6rem;
+        font-size: 0.92rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-main);
+
+        &.mono {
+          font-family: $font-mono;
+          font-size: 0.86rem;
+        }
+
+        .badge-status {
+          padding: 4px 10px;
+          border-radius: var(--radius-pill);
+          font-size: 0.74rem;
+          font-weight: 700;
+          background: rgba(16, 185, 129, 0.15);
+          color: var(--emerald-accent);
+          border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+      }
+
+      tr:hover td {
+        background: rgba(245, 158, 11, 0.04);
+      }
+    }
+  }
+}
+
+// --- 8. FOOTER ---
+.footer {
+  padding: 3rem 4rem;
+  background: #04060a;
+  border-top: 1px solid var(--border-glass);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .footer-left {
+    p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      color: var(--gold-glow);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// --- 9. RESPONSIVE BREAKPOINTS ---
+@media (max-width: 1024px) {
+  .hero-section {
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    .hero-3d { width: 100%; height: 420px; }
+  }
+  .section-engine .engine-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-lab .lab-card .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    .nav-menu { display: none; }
+  }
+  .hero-section {
+    padding: 2rem 1rem;
+    .hero-stats { grid-template-columns: 1fr; }
+  }
+  .section-lab {
+    padding: 3rem 1rem;
+    .metrics-grid { grid-template-columns: 1fr !important; }
+  }
+  .section-engine, .section-tech, .footer {
+    padding: 2.5rem 1rem;
+  }
+  .footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}

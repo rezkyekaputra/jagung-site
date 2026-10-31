@@ -1,0 +1,72 @@
+/// =========================================================
+/// JAGUNG NIDUN · AUTO-GENERATED TOKENS BY FORTRAN 14 ENGINE
+/// Jangan diedit manual! Di-generate dari jagung_engine.f90
+/// =========================================================
+@use 'sass:math';
+@use 'sass:color';
+
+// Palet Warna Botani & Emas Jagung Nidun
+$corn-gold-core:    #f59e0b;
+$corn-gold-glow:    #fbbf24;
+$corn-gold-deep:    #b45309;
+$corn-leaf-emerald: #10b981;
+$corn-leaf-deep:    #064e3b;
+$corn-soil-dark:    #090d16;
+$corn-silk-amber:   #d97706;
+
+// Animasi Denyut Fotosintesis Zea Mays (Formula Fisika Fortran)
+@keyframes corn-photosynthesis-pulse {
+    0.0% {
+    transform: scale( 1.00) translateY(-0.00px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.22);
+  }
+   10.0% {
+    transform: scale( 1.01) translateY(-1.47px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.28);
+  }
+   20.0% {
+    transform: scale( 1.02) translateY(-2.38px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.33);
+  }
+   30.0% {
+    transform: scale( 1.02) translateY(-2.38px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.37);
+  }
+   40.0% {
+    transform: scale( 1.01) translateY(-1.47px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.39);
+  }
+   50.0% {
+    transform: scale( 1.00) translateY(-0.00px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.40);
+  }
+   60.0% {
+    transform: scale( 0.99) translateY( 1.47px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.39);
+  }
+   70.0% {
+    transform: scale( 0.98) translateY( 2.38px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.37);
+  }
+   80.0% {
+    transform: scale( 0.98) translateY( 2.38px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.33);
+  }
+   90.0% {
+    transform: scale( 0.99) translateY( 1.47px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.28);
+  }
+  100.0% {
+    transform: scale( 1.00) translateY( 0.00px);
+    box-shadow: 0 12px 36px rgba(245, 158, 11, 0.22);
+  }
+}
+
+@keyframes gold-pollen-glow {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.45)); }
+  50%      { filter: drop-shadow(0 0 28px rgba(251, 191, 36, 0.85)); }
+}
+
+// Status Agrikultur Pre-Calculated
+$corn-max-height-cm:  265.0cm;
+$corn-max-lai:        4.85;
