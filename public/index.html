@@ -239,8 +239,23 @@
     <section class="section-romanza" id="romanza">
       <div class="romanza-grid">
         <div class="romanza-media-card">
-          <div class="raw-badge">🌿 Raw Image Asset · Zea Mays Saccharata</div>
-          <img src="images/romanza.png" alt="Jagung Manis Romanza F1" class="romanza-img">
+          <div class="raw-badge" id="badgeSassRender">🎨 100% Sass Rendered · No Raw &lt;img&gt;</div>
+          
+          <!-- View 1: Rendered from SCSS Variable $romanza-embedded-uri -->
+          <div id="panelEmbedded" class="view-panel active romanza-scss-embedded-frame"></div>
+          
+          <!-- View 2: Pure CSS Box-Shadow Art (3.587 Pixels Drawn with CSS) -->
+          <div id="panelCssArt" class="view-panel romanza-art-canvas-box">
+            <div class="romanza-pure-css-art-scaler">
+              <div class="romanza-pure-css-art"></div>
+            </div>
+          </div>
+
+          <!-- Switcher Mode Render Sass -->
+          <div class="romanza-toggle-bar">
+            <button type="button" class="toggle-btn active" id="btnSassUri">🎨 Sass Data-URI</button>
+            <button type="button" class="toggle-btn" id="btnCssArt">✨ Pure CSS Art (3.5k Box-Shadow)</button>
+          </div>
         </div>
 
         <div class="romanza-info">

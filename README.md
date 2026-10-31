@@ -82,6 +82,7 @@ jagungnidun/
 │   └── scss/
 │       ├── _corn_tokens.scss    # Token & keyframes hasil auto-generate Fortran
 │       ├── _romanza_tokens.scss # Token warna hasil ekstraksi foto romanza.png
+│       ├── _romanza_art.scss    # Konversi foto ke Sass (Base64 URI & 3.5k Pure CSS Box-Shadow Art)
 │       └── style.scss           # Stylesheet utama Dart Sass
 └── public/
     ├── index.html               # Halaman web single-page utama

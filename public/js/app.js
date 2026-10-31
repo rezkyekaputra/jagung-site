@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initPollenCanvas();
   initGrowthLab();
+  initRomanzaToggle();
 });
 
 // ------------------------------------------------------------------------------
@@ -163,4 +164,33 @@ function initGrowthLab() {
 
   // Nilai awal: 72 HST (Fase Silking / Rambut Emas)
   updateDisplay(slider.value);
+}
+
+// ------------------------------------------------------------------------------
+// 3. ROMANZA PURE SASS RENDER TOGGLE (SWITCHER ANTARA BASE64 VS PURE CSS ART)
+// ------------------------------------------------------------------------------
+function initRomanzaToggle() {
+  const btnSassUri = document.getElementById('btnSassUri');
+  const btnCssArt = document.getElementById('btnCssArt');
+  const panelEmbedded = document.getElementById('panelEmbedded');
+  const panelCssArt = document.getElementById('panelCssArt');
+  const badgeSassRender = document.getElementById('badgeSassRender');
+
+  if (!btnSassUri || !btnCssArt || !panelEmbedded || !panelCssArt) return;
+
+  btnSassUri.addEventListener('click', () => {
+    btnSassUri.classList.add('active');
+    btnCssArt.classList.remove('active');
+    panelEmbedded.classList.add('active');
+    panelCssArt.classList.remove('active');
+    badgeSassRender.textContent = '🎨 Sass Embedded URI · 100% via Stylesheet';
+  });
+
+  btnCssArt.addEventListener('click', () => {
+    btnCssArt.classList.add('active');
+    btnSassUri.classList.remove('active');
+    panelCssArt.classList.add('active');
+    panelEmbedded.classList.remove('active');
+    badgeSassRender.textContent = '✨ Pure CSS Art · 3.587 Box-Shadow Pixels';
+  });
 }
