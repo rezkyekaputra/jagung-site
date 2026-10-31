@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPollenCanvas();
   initGrowthLab();
   initRomanzaToggle();
+  initFaseShowcase();
 });
 
 // ------------------------------------------------------------------------------
@@ -193,4 +194,45 @@ function initRomanzaToggle() {
     panelEmbedded.classList.remove('active');
     badgeSassRender.textContent = '✨ Pure CSS Art · 3.587 Box-Shadow Pixels';
   });
+}
+
+// ------------------------------------------------------------------------------
+// 4. 5 FASE PERTUMBUHAN BOTANI TABS & 3D SWITCHER
+// ------------------------------------------------------------------------------
+function initFaseShowcase() {
+  const tabs = document.querySelectorAll('.fase-visual-tabs .tab-btn');
+  const panels = document.querySelectorAll('.fase-panel');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => t.classList.remove('active'));
+      panels.forEach((p) => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      const targetId = tab.dataset.targetPanel;
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    });
+  });
+
+  const btnInspectFase3D = document.getElementById('btnInspectFase3D');
+  if (btnInspectFase3D) {
+    btnInspectFase3D.addEventListener('click', () => {
+      const btnModelTimeline = document.getElementById('btnModelTimeline');
+      const btnModelCob = document.getElementById('btnModelCob');
+      if (btnModelTimeline && btnModelCob) {
+        btnModelTimeline.classList.add('active');
+        btnModelCob.classList.remove('active');
+      }
+      if (window.cornShaderStudio) {
+        window.cornShaderStudio.loadCornModel('models/fase_pertumbuhan_jagung.glb');
+      }
+      const studioSec = document.getElementById('3d-studio');
+      if (studioSec) {
+        studioSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 }

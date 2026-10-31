@@ -1,0 +1,50 @@
+/// ==============================================================================
+/// JAGUNG NIDUN · FASE PERTUMBUHAN BOTANICAL TOKENS (DART SASS 1.107)
+/// Hasil ekstraksi spektral diagram agronomi: jagung1.png
+/// Fase 1: Pertumbuhan Awal (15-25 hari)
+/// Fase 2: Vegetatif (25-40 hari)
+/// Fase 3: Pembungaan (15-20 hari) - Bunga Betina & Jantan
+/// Fase 4: Pengisian Biji (35-40 hari)
+/// Fase 5: Masak Fisiologis (10-25 hari)
+/// ==============================================================================
+@use 'sass:math';
+@use 'sass:color';
+
+// --- PALET TOKENS ANATOMI FASE PERTUMBUHAN ---
+$fase-sketch-ink:       #181a1b; // Tinta hitam sketsa anatomi tanaman
+$fase-sketch-muted:     #4b5563; // Arsiran abu-abu bayangan daun
+$fase-sketch-bg:        #fafaf9; // Kertas botani hangat
+$fase-sprout-green:     #10b981; // Fase 1: Kecambah muda (15-25 HST)
+$fase-vegetative-green: #059669; // Fase 2: Kanopi vegetatif (25-40 HST)
+$fase-flower-silk:      #d97706; // Fase 3: Rambut sutra & malai (15-20 HST)
+$fase-kernel-fill:      #f59e0b; // Fase 4: Pengisian pati bulir (35-40 HST)
+$fase-harvest-gold:     #eab308; // Fase 5: Panen raya fisiologis (10-25 HST)
+
+// Maps Fase Pertumbuhan untuk Iterator Sass
+$fase-growth-stages: (
+  'awal': (
+    'nama': 'Pertumbuhan Awal',
+    'durasi': '15-25 Hari',
+    'warna': $fase-sprout-green
+  ),
+  'vegetatif': (
+    'nama': 'Fase Vegetatif',
+    'durasi': '25-40 Hari',
+    'warna': $fase-vegetative-green
+  ),
+  'pembungaan': (
+    'nama': 'Pembungaan (Polinasi)',
+    'durasi': '15-20 Hari',
+    'warna': $fase-flower-silk
+  ),
+  'pengisian': (
+    'nama': 'Pengisian Biji',
+    'durasi': '35-40 Hari',
+    'warna': $fase-kernel-fill
+  ),
+  'masak': (
+    'nama': 'Masak Fisiologis',
+    'durasi': '10-25 Hari',
+    'warna': $fase-harvest-gold
+  )
+);

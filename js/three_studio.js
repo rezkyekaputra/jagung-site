@@ -181,13 +181,23 @@ class CornShaderStudio {
     this.scene.add(this.pollenPoints);
   }
 
-  loadCornModel() {
+  loadCornModel(modelPath = 'models/jagung.glb') {
+    if (this.cornModel) {
+      this.scene.remove(this.cornModel);
+      this.pbrMaterials.clear();
+      this.cornModel = null;
+    }
+
     const loader = new GLTFLoader();
     const loadingElem = document.getElementById('threeLoading');
-    if (loadingElem) loadingElem.style.display = 'flex';
+    if (loadingElem) {
+      loadingElem.style.display = 'flex';
+      const label = loadingElem.querySelector('span');
+      if (label) label.innerText = 'Memuat Model 3D...';
+    }
 
     loader.load(
-      'models/jagung.glb',
+      modelPath,
       (gltf) => {
         this.cornModel = gltf.scene;
 
@@ -215,10 +225,11 @@ class CornShaderStudio {
 
         // Update Shader Materials
         this.createCustomShaderMaterials();
+        this.setShaderMode(this.activeShaderMode);
       },
       undefined,
       (err) => {
-        console.error('Gagal memuat jagung.glb di Three.js:', err);
+        console.error('Gagal memuat ' + modelPath + ' di Three.js:', err);
         if (loadingElem) loadingElem.innerText = '❌ Gagal memuat model 3D';
       }
     );
@@ -426,6 +437,22 @@ class CornShaderStudio {
         this.camera.position.set(0, 0.8, 5.2);
         this.controls.target.set(0, 0, 0);
         this.controls.update();
+      });
+    }
+
+    // Model Switcher (Hero Cob vs 5-Stage Timeline)
+    const btnModelCob = document.getElementById('btnModelCob');
+    const btnModelTimeline = document.getElementById('btnModelTimeline');
+    if (btnModelCob && btnModelTimeline) {
+      btnModelCob.addEventListener('click', () => {
+        btnModelCob.classList.add('active');
+        btnModelTimeline.classList.remove('active');
+        this.loadCornModel('models/jagung.glb');
+      });
+      btnModelTimeline.addEventListener('click', () => {
+        btnModelTimeline.classList.add('active');
+        btnModelCob.classList.remove('active');
+        this.loadCornModel('models/fase_pertumbuhan_jagung.glb');
       });
     }
   }

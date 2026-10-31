@@ -47,6 +47,7 @@
       <li><a href="#3d-studio">3D Studio</a></li>
       <li><a href="#lab">Lab Pertumbuhan</a></li>
       <li><a href="#engine">Engine Fortran</a></li>
+      <li><a href="#fase">5 Fase Pertumbuhan</a></li>
       <li><a href="#romanza">Varietas Romanza</a></li>
       <li><a href="#benchmark">Benchmark</a></li>
     </ul>
@@ -101,6 +102,10 @@
         <div class="viewer-top-bar">
           <div class="viewer-badge" id="activeShaderBadge">
             <span>⚡ Three.js × GLSL Shaders</span>
+          </div>
+          <div class="model-switch-bar">
+            <button id="btnModelCob" class="model-btn active" title="Model 3D Tongkol Detail">🌽 Tongkol Detail</button>
+            <button id="btnModelTimeline" class="model-btn" title="Model 3D 5 Fase Pertumbuhan">🌱 5 Fase Timeline</button>
           </div>
           <div class="viewer-quick-actions">
             <button id="btnToggleRotate" class="action-btn active" title="Toggle Putar Otomatis">🔄 Putar</button>
@@ -274,6 +279,130 @@
       </div>
     </section>
 
+    <!-- 5 Fase Pertumbuhan Jagung (Growth Stages) 3D & Sass Showcase -->
+    <section class="section-fase" id="fase">
+      <div class="fase-header">
+        <div class="fase-pill">
+          <span>🌾 Agronomi & Fenologi Botani · Siklus 120 HST</span>
+        </div>
+        <h2>5 Fase Pertumbuhan Tanaman Jagung</h2>
+        <p>
+          Rekonstruksi komprehensif siklus hidup <em>Zea mays L.</em> dari diagram botani <code>jagung1.png</code>,
+          diekstraksi menjadi token desain <strong>Dart Sass</strong> dan dirender penuh dalam <strong>3D Blender EEVEE Next</strong>.
+        </p>
+      </div>
+
+      <!-- Visual Showcase dengan Tabs Perbandingan -->
+      <div class="fase-visual-showcase">
+        <div class="fase-visual-tabs">
+          <button class="tab-btn active" data-target-panel="panelFase3D">📸 3D Blender Render (EEVEE Next)</button>
+          <button class="tab-btn" data-target-panel="panelFaseSass">🎨 Sass Embedded Art (CSS Base64)</button>
+          <button class="tab-btn" data-target-panel="panelFaseSketch">📐 Sketsa Asli Diagram (PNG)</button>
+        </div>
+
+        <div class="fase-view-container">
+          <!-- View 1: 3D Render dari Blender 4.5 EEVEE Next -->
+          <div id="panelFase3D" class="fase-panel active">
+            <img src="images/fase_pertumbuhan_jagung_render.png" alt="Render 3D 5 Fase Pertumbuhan Jagung" loading="lazy">
+          </div>
+
+          <!-- View 2: Sass Embedded Art (Pure CSS & Base64 Data URI) -->
+          <div id="panelFaseSass" class="fase-panel">
+            <div class="growth-diagram-embedded" style="margin: 0 auto;"></div>
+          </div>
+
+          <!-- View 3: Sketsa Asli Diagram PNG -->
+          <div id="panelFaseSketch" class="fase-panel">
+            <img src="images/jagung1.png" alt="Sketsa Diagram Agronomi Jagung Asli" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 Kartu Fase Pertumbuhan -->
+      <div class="fase-cards-grid">
+        <!-- Fase 1 -->
+        <div class="fase-card stage-1">
+          <span class="stage-badge">Fase 01</span>
+          <h3>Pertumbuhan Awal</h3>
+          <div class="stage-duration">⏱️ 0 - 15 HST (15-25 Hari)</div>
+          <p>
+            Perkecambahan benih, muncul radikula seminal dan koleoptil. Terbentuk 3 helai daun kecambah muda hijau pupus segar.
+          </p>
+          <div class="stage-token">
+            <span class="color-dot" style="background: #10b981;"></span>
+            <span>$fase-sprout-green (#10b981)</span>
+          </div>
+        </div>
+
+        <!-- Fase 2 -->
+        <div class="fase-card stage-2">
+          <span class="stage-badge">Fase 02</span>
+          <h3>Fase Vegetatif</h3>
+          <div class="stage-duration">⏱️ 15 - 45 HST (25-40 Hari)</div>
+          <p>
+            Pertumbuhan cepat batang kokoh beruas (internodes), kanopi 6-8 helai daun melengkung mekar bersilangan, akar jangkar menembus tanah.
+          </p>
+          <div class="stage-token">
+            <span class="color-dot" style="background: #059669;"></span>
+            <span>$fase-vegetative-green (#059669)</span>
+          </div>
+        </div>
+
+        <!-- Fase 3 -->
+        <div class="fase-card stage-3">
+          <span class="stage-badge">Fase 03</span>
+          <h3>Pembungaan (Polinasi)</h3>
+          <div class="stage-duration">⏱️ 45 - 65 HST (15-20 Hari)</div>
+          <p>
+            Malai bunga jantan (tassel) mekar di puncak kanopi menebarkan serbuk sari emas. Bakal tongkol betina mekar dengan jumbai rambut sutra (*silks*).
+          </p>
+          <div class="stage-token">
+            <span class="color-dot" style="background: #d97706;"></span>
+            <span>$fase-flower-silk (#d97706)</span>
+          </div>
+        </div>
+
+        <!-- Fase 4 -->
+        <div class="fase-card stage-4">
+          <span class="stage-badge">Fase 04</span>
+          <h3>Pengisian Biji</h3>
+          <div class="stage-duration">⏱️ 65 - 90 HST (35-40 Hari)</div>
+          <p>
+            Tongkol membesar padat (*milk to dough stage*). Barisan biji jagung mengisi pati kuning keemasan, rambut sutra mulai mengering kecokelatan.
+          </p>
+          <div class="stage-token">
+            <span class="color-dot" style="background: #f59e0b;"></span>
+            <span>$fase-kernel-fill (#f59e0b)</span>
+          </div>
+        </div>
+
+        <!-- Fase 5 -->
+        <div class="fase-card stage-5">
+          <span class="stage-badge">Fase 05</span>
+          <h3>Masak Fisiologis</h3>
+          <div class="stage-duration">⏱️ 90 - 120 HST (10-25 Hari)</div>
+          <p>
+            Tongkol matang sempurna merunduk berat. Kelobot kering mekar terbuka memamerkan barisan biji bermahkota dent berkilau siap dipanen.
+          </p>
+          <div class="stage-token">
+            <span class="color-dot" style="background: #eab308;"></span>
+            <span>$fase-harvest-gold (#eab308)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Box Interaktif ke 3D Studio -->
+      <div class="fase-cta-box">
+        <h4>Eksplorasi Model 3D Fase Pertumbuhan Interaktif</h4>
+        <p>
+          Model 3D kelima fase ini telah diekspor ke format <strong>glTF/GLB</strong> (1.4 MB) dan siap diinspeksi secara real-time 360° di 3D Studio!
+        </p>
+        <button id="btnInspectFase3D" class="btn-primary" style="margin: 0 auto; display: inline-flex; cursor: pointer;">
+          <span>🚀 Buka Model 5 Fase di 3D Studio WebGL</span>
+        </button>
+      </div>
+    </section>
+
     <!-- Varietas Jagung Manis Romanza Showcase & Color Tokens -->
     <section class="section-romanza" id="romanza">
       <div class="romanza-grid">
@@ -396,10 +525,17 @@
             </tr>
             <tr>
               <td><strong>3D Graphics</strong></td>
-              <td class="mono">Google Model-Viewer / Three.js</td>
-              <td class="mono">3.4.0 (WebGL 2.0)</td>
-              <td>Rendering PBR 3D Model Jagung 360°</td>
+              <td class="mono">Three.js + GLSL</td>
+              <td class="mono">r160 (WebGL 2.0)</td>
+              <td>Rendering PBR & Custom GLSL SSS / Heatmap 360°</td>
               <td><span class="badge-status">GPU Hardware Accel</span></td>
+            </tr>
+            <tr>
+              <td><strong>3D Botanical Pipeline</strong></td>
+              <td class="mono">Blender 4.5.5 LTS (bpy)</td>
+              <td class="mono">EEVEE Next / glTF</td>
+              <td>Pemodelan Prosedural 5 Fase Pertumbuhan & Tongkol</td>
+              <td><span class="badge-status">Headless Auto (0 Error)</span></td>
             </tr>
             <tr>
               <td><strong>Micro-Interactions</strong></td>

@@ -48,8 +48,14 @@ test:
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/ | grep 200 > /dev/null && echo "✅ PASS (200 OK)" || echo "❌ FAIL"; \
 	echo -n "  -> Testing GET /css/style.min.css (Sass CSS): "; \
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/css/style.min.css | grep 200 > /dev/null && echo "✅ PASS (200 OK)" || echo "❌ FAIL"; \
-	echo -n "  -> Testing GET /models/jagung.glb (3D Asset): "; \
+	echo -n "  -> Testing GET /models/jagung.glb (3D Hero Cob): "; \
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/models/jagung.glb | grep 200 > /dev/null && echo "✅ PASS (1.9MB GLB Streaming)" || echo "❌ FAIL"; \
+	echo -n "  -> Testing GET /models/fase_pertumbuhan_jagung.glb (3D 5-Stage Model): "; \
+	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/models/fase_pertumbuhan_jagung.glb | grep 200 > /dev/null && echo "✅ PASS (1.4MB GLB Streaming)" || echo "❌ FAIL"; \
+	echo -n "  -> Testing GET /images/fase_pertumbuhan_jagung_render.png (3D Blender Render): "; \
+	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/images/fase_pertumbuhan_jagung_render.png | grep 200 > /dev/null && echo "✅ PASS (1.5MB PNG Image)" || echo "❌ FAIL"; \
+	echo -n "  -> Testing GET /images/jagung1.png (Botanical Sketch): "; \
+	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/images/jagung1.png | grep 200 > /dev/null && echo "✅ PASS (151KB PNG Image)" || echo "❌ FAIL"; \
 	echo -n "  -> Testing GET /images/romanza.png (Raw Photo): "; \
 	curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:18080/images/romanza.png | grep 200 > /dev/null && echo "✅ PASS (281KB PNG Image)" || echo "❌ FAIL"; \
 	echo -n "  -> Testing GET /data_corn.json (Fortran JSON Data): "; \
